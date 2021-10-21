@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/custom.css') }}">
+    <title>{% block title %}{% endblock %} - Senz</title>
+    {% endblock %}
+    <script>
+      function copyToCliBoard(elementID) {
+        var copyText = document.getElementById(elementID);
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+        document.execCommand("copy");
+      }
+      </script>
+  </head>
+  <body>
+    <div class="container h-100">
+      <div class="row align-items-center h-100">
+        <div class="col-6 mx-auto">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class="flashes alert alert-danger">
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+      {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      {% block footer %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}{{ mytitle }}{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Secure sharing</h1>      
+    <p>Need to share sensitive information? Password, key, secret or whatever? This is the place.</p>
+
+    <form autocomplete="off" action="{{ url_for('submit') }}" method="post">
+      <div class="form-group">
+        <input type="text" class="form-control" id="secret" placeholder="Insert secret/password you'd like to share" value="{{secret}}" name="secret">
+        <hr />
+        <input type="text" class="form-control" id="password" placeholder="Password for encryption." value="{{password}}" name="password">
+        <br />
+        <button type="submit" class="btn btn-primary">Generate Link</button>
+      <div>
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

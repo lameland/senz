@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}{{ mytitle }}{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Secure sharing</h1>
+    <p>Need to share sensitive information? Password, key, secret or whatever? This is the place.</p>
+    <p>Here is your decrypted secret:</p>
+    <div class="form-inline">
+      <div class="form-group mb-2">
+        <label for="secretl" class="sr-only">Secret/Password:</label>
+        <input type="text" readonly class="form-control-plaintext" id="secretl" value="Secret/Password:">
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="secret" class="sr-only">Secret</label>
+        <input type="text" class="form-control" id="secret" placeholder="Secret"
+          value="{{ secret }}">
+      </div>
+      <button class="btn btn-primary mb-2" onclick="copyToCliBoard('secret')">Copy</button>
+    </div>
+    <p><b>IMPORTANT NOTE:</b>This secret has been destroyed on the server side. There is no way to retrieve it second time. Please copy and save it in a secure place.</p>
+    <a href="/" class="btn btn-primary">Generate new secret</a>
+  </div>
+</div>
+{% endblock %}

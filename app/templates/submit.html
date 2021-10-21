@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block title %}{{ mytitle }}{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Secure sharing</h1>      
+    <p>Need to share sensitive information? Password, key, secret or whatever? This is the place.</p>
+    <p>Information you need to share:</p>
+    <div class="form-inline">
+      <div class="form-group mb-2">
+        <label for="url" class="sr-only">Secret URL</label>
+        <input type="text" readonly class="form-control-plaintext" id="urldescr" value="Secret URL:">
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="url" class="sr-only">Secret URL</label>
+        <input type="text" class="form-control" id="url" placeholder="Secret URL"
+          value="{{ url_for('index', _external=True) }}sec?uid={{uid}}">
+      </div>
+      <button class="btn btn-primary mb-2" onclick="copyToCliBoard('url')">Copy</button>
+    
+      <div class="form-group mb-2">
+        <label for="crdate" class="sr-only">Creation Date:</label>
+        <input type="text" readonly class="form-control-plaintext" id="crdate" value="Creation Date:">
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="date" class="sr-only">Creation Date:</label>
+        <input type="text" class="form-control" id="date" placeholder="Creation Date" value="{{date}}">
+      </div>
+      <button class="btn btn-primary mb-2" onclick="copyToCliBoard('date')">Copy</button>
+    
+      <div class="form-group mb-2">
+        <label for="pw" class="sr-only">Password</label>
+        <input type="text" readonly class="form-control-plaintext" id="pw" value="Password:">
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="password" class="sr-only">Password:</label>
+        <input type="text" class="form-control" id="password" placeholder="Password" value="{{password}}">
+      </div>
+      <button class="btn btn-primary mb-2" onclick="copyToCliBoard('password')">Copy</button>
+    
+    </div>
+    <a href="/" class="btn btn-primary">Generate new secret</a>
+
+  </div>
+</div>
+
+
+{% endblock %}
