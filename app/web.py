@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from handlers import create, decode, check
+import os
 
 app = Flask(__name__)
-app.secret_key = b'_5#y2L"G!@#$ddc6Q4z\n\xec]/' # Used for sessions.
+app.secret_key = os.environ.get("SENZ_SECRET_KEY") # Used for sessions.
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
