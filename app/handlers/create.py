@@ -4,13 +4,14 @@ from google.cloud import storage
 import cryptocode
 import os
 
+
 class Save:
     def __init__(self, secret, password):
         self.secret = secret
         self.password = password
-        self.date = datetime.datetime.today().strftime ('%d-%m-%Y')
+        self.date = datetime.datetime.today().strftime("%d-%m-%Y")
         self.uid = str(uuid())
-        self.encryptionPass = self.password+self.date
+        self.encryptionPass = self.password + self.date
 
     def createFile(self):
         encoded = cryptocode.encrypt(self.secret, self.encryptionPass)

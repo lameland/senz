@@ -2,14 +2,15 @@ from google.cloud import storage
 import cryptocode
 import os
 
+
 class Get:
     def __init__(self, uid, password, date):
-        self.uid = uid,
-        self.password = password,
+        self.uid = (uid,)
+        self.password = (password,)
         self.date = date
         self.client = storage.Client()
         self.bucket = self.client.get_bucket(os.environ.get("BUCKET"))
-    
+
     def decrypt(self):
         try:
 
@@ -24,7 +25,7 @@ class Get:
             return False
 
     def destroy(self):
-        
+
         try:
             blob = self.bucket.blob(self.uid[0])
             blob.delete()
