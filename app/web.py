@@ -22,7 +22,7 @@ def index():
         mycontent="Hello Senz",
     )
 
-failit
+nema = nema
 
 @app.route("/submit", methods=["POST"])
 def submit():
