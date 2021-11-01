@@ -22,6 +22,7 @@ def index():
         mycontent="Hello Senz",
     )
 
+failit
 
 @app.route("/submit", methods=["POST"])
 def submit():
