@@ -25,4 +25,4 @@ jobs:
         run: python -m pip install flake8
 
       - name: Check code with flake8
-        run: flake8 app/*.py */*.py
+        run: flake8 app/*.py app/handlers/*.py
