@@ -1,0 +1,30 @@
+name: Pre-Commit checks
+
+on:
+  push:
+    branches: [ master,  pre-commit-ci ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Senz App
+        uses: actions/checkout@master
+        with:
+          repository: lameland/senz
+
+      - name: Checkout Python3 and install requirements
+        uses: actions/setup-python@v2
+        run: python -m pip install -r tests.txt
+      - name: Install tests.txt
+
+      - name: Check code with black
+        run: black app/*.py */*.py
+
+      - name: Check code with flake8
+        run: flake8 app/*.py */*.py
