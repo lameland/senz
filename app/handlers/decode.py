@@ -1,6 +1,7 @@
 from google.cloud import storage
 import cryptocode
 import os
+import logging
 
 
 class Get:
@@ -21,7 +22,8 @@ class Get:
             decryptionPass = password + self.date
             decoded = cryptocode.decrypt(blob, decryptionPass)
             return decoded
-        except:
+        except Exception as ex:
+            logging.info(ex)
             return False
 
     def destroy(self):
@@ -30,5 +32,6 @@ class Get:
             blob = self.bucket.blob(self.uid[0])
             blob.delete()
             return True
-        except:
+        except Exception as ex:
+            logging.info(ex)
             return False
