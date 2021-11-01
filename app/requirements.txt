@@ -2,5 +2,3 @@ flask
 google-cloud-storage
 cryptocode
 gunicorn
-logging
-setuptools
