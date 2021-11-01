@@ -21,9 +21,7 @@ def index():
         mytitle=pagetitle,
         mycontent="Hello Senz",
     )
-
-nema = nema
-
+nema1 = nema
 @app.route("/submit", methods=["POST"])
 def submit():
     secret = request.form.get("secret")
