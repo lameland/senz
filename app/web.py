@@ -21,7 +21,8 @@ def index():
         mytitle=pagetitle,
         mycontent="Hello Senz",
     )
-nema1 = nema
+
+
 @app.route("/submit", methods=["POST"])
 def submit():
     secret = request.form.get("secret")
@@ -72,9 +73,9 @@ def get():
         elif secret.decrypt() is not False:
             result = secret.decrypt()
             secret.destroy()
-            return render_template("get.html",
-                                   secret=result,
-                                   mytitle="Retrieve Secret")
+            return render_template(
+                "get.html", secret=result, mytitle="Retrieve Secret"
+            )
         else:
             flash("Method not allowed")
             return redirect(url_for("index"))
